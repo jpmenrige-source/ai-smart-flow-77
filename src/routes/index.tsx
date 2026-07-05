@@ -67,7 +67,7 @@ const SERVICES = [
 
 const WORKS = [
   {
-    title: "AI Career Automation Platform",
+    title: "AI Career Automation Platform + Resume Optimize",
     tag: "AI Agents · RAG",
     desc: "AI recruitment assistant that discovers jobs, analyzes descriptions, and generates ATS-optimized resumes and cover letters.",
     tech: ["n8n", "OpenRouter", "GPT-4o", "Gemini", "Slack"],
