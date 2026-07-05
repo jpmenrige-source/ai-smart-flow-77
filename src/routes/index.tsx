@@ -266,12 +266,15 @@ function Header() {
             </a>
           ))}
         </nav>
-        <a
-          href="#contact"
-          className="inline-flex items-center gap-1.5 rounded-full bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:opacity-90 transition-opacity"
-        >
-          Hire me <ArrowUpRight className="h-3.5 w-3.5" />
-        </a>
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-1.5 rounded-full bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:opacity-90 transition-opacity"
+          >
+            Hire me <ArrowUpRight className="h-3.5 w-3.5" />
+          </a>
+        </div>
       </div>
     </header>
   );
