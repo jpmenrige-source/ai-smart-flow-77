@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { useEffect, useState } from "react";
+import { Sun, Moon } from "lucide-react";
 import {
   Bot,
   Workflow,
