@@ -18,7 +18,15 @@ import {
   Cpu,
   Network,
   Quote,
+  Award,
+  BookOpen,
+  FileText,
 } from "lucide-react";
+import HighLevelCert from "@/assets/HighLevel.pdf.asset.json";
+import MakeCert from "@/assets/Make.com.pdf.asset.json";
+import N8nCert from "@/assets/n8n.pdf.asset.json";
+import PromptCert from "@/assets/Prompt_Engineering.pdf.asset.json";
+import ZapierCert from "@/assets/Zapier.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
@@ -27,9 +35,31 @@ export const Route = createFileRoute("/")({
 const NAV = [
   { label: "Services", href: "#services" },
   { label: "Experience", href: "#experience" },
+  { label: "Certifications", href: "#certifications" },
   { label: "Work", href: "#work" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
+];
+
+const CERTIFICATIONS = [
+  { name: "n8n Automation", issuer: "n8n Training", file: N8nCert.url },
+  { name: "Make.com Automation", issuer: "Make Academy", file: MakeCert.url },
+  { name: "Zapier Automation", issuer: "Zapier", file: ZapierCert.url },
+  { name: "GoHighLevel", issuer: "HighLevel", file: HighLevelCert.url },
+  { name: "Prompt Engineering", issuer: "Prompt Engineering Certification", file: PromptCert.url },
+];
+
+const PROFESSIONAL_DEVELOPMENT = [
+  "Claude",
+  "Hermes",
+  "Llama",
+  "Mistral",
+  "Model Context Protocol (MCP)",
+  "Agent-to-Agent (A2A) Communication",
+  "Multi-Agent Systems",
+  "AI Memory Systems",
+  "Enterprise AI Architecture",
+  "Responsible AI",
 ];
 
 const SERVICES = [
@@ -158,6 +188,7 @@ function Portfolio() {
         <Hero />
         <Services />
         <Experience />
+        <Certifications />
         <Work />
         <Testimonials />
         <Contact />
@@ -450,6 +481,69 @@ function Experience() {
               </ul>
             </motion.div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Certifications() {
+  return (
+    <section id="certifications" className="relative py-24 md:py-32 border-t border-border/60">
+      <div className="max-w-7xl mx-auto px-6">
+        <SectionHeader
+          eyebrow="Certifications"
+          title="Training & credentials."
+          desc="Formal training in leading AI automation platforms — plus ongoing professional development in the frontier of AI."
+        />
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {CERTIFICATIONS.map((c, i) => (
+            <motion.a
+              key={c.name}
+              href={c.file}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              className="group relative p-6 rounded-2xl border border-border bg-card/60 backdrop-blur hover:border-primary/60 hover:bg-card transition-all flex items-start gap-4"
+            >
+              <div className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <Award className="h-5 w-5" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="font-display text-lg font-semibold leading-tight">{c.name}</h3>
+                <p className="mt-1 text-xs text-muted-foreground">{c.issuer}</p>
+                <div className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-wider text-primary">
+                  <FileText className="h-3 w-3" /> View certificate
+                </div>
+              </div>
+              <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+            </motion.a>
+          ))}
+        </div>
+
+        <div className="mt-16 rounded-2xl border border-border bg-card/60 backdrop-blur p-8 md:p-10">
+          <div className="flex items-center gap-3">
+            <div className="grid h-10 w-10 place-items-center rounded-lg bg-primary/10 text-primary">
+              <BookOpen className="h-5 w-5" />
+            </div>
+            <div>
+              <div className="font-mono text-xs uppercase tracking-widest text-primary">Professional Development</div>
+              <h3 className="font-display text-2xl font-semibold mt-1">Actively expanding expertise in</h3>
+            </div>
+          </div>
+          <div className="mt-6 flex flex-wrap gap-2">
+            {PROFESSIONAL_DEVELOPMENT.map((p) => (
+              <span
+                key={p}
+                className="rounded-full border border-border bg-surface px-4 py-1.5 text-sm font-medium text-foreground/90 hover:border-primary/60 hover:text-primary transition-colors"
+              >
+                {p}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>
