@@ -188,6 +188,7 @@ function Portfolio() {
         <Hero />
         <Services />
         <Experience />
+        <Certifications />
         <Work />
         <Testimonials />
         <Contact />
