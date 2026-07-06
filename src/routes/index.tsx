@@ -18,7 +18,15 @@ import {
   Cpu,
   Network,
   Quote,
+  Award,
+  BookOpen,
+  FileText,
 } from "lucide-react";
+import HighLevelCert from "@/assets/HighLevel.pdf.asset.json";
+import MakeCert from "@/assets/Make.com.pdf.asset.json";
+import N8nCert from "@/assets/n8n.pdf.asset.json";
+import PromptCert from "@/assets/Prompt_Engineering.pdf.asset.json";
+import ZapierCert from "@/assets/Zapier.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
