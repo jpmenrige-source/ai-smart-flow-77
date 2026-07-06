@@ -131,8 +131,8 @@ html { transition: background-color 0.4s ease, color 0.4s ease; }
     color: var(--color-foreground);
     font-family: var(--font-sans);
     background-image:
-      radial-gradient(circle at 15% -10%, oklch(0.88 0.22 130 / 0.08), transparent 45%),
-      radial-gradient(circle at 100% 10%, oklch(0.72 0.16 250 / 0.06), transparent 40%);
+      radial-gradient(circle at 85% -5%, oklch(0.74 0.19 55 / 0.12), transparent 45%),
+      radial-gradient(circle at 0% 20%, oklch(0.55 0.18 30 / 0.08), transparent 40%);
     background-attachment: fixed;
   }
   h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
