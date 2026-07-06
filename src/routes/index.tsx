@@ -28,6 +28,7 @@ import N8nCert from "@/assets/n8n.pdf.asset.json";
 import PromptCert from "@/assets/Prompt_Engineering.pdf.asset.json";
 import ZapierCert from "@/assets/Zapier.pdf.asset.json";
 import Photo from "@/assets/photo.jpg.asset.json";
+import Background from "@/assets/background.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
