@@ -187,24 +187,13 @@ function Portfolio() {
       <Header />
       <main>
         <Hero />
-        <div
-          className="relative"
-          style={{
-            backgroundImage: `url(${Background.url})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundAttachment: "fixed",
-          }}
-        >
-          <div className="absolute inset-0 bg-black/85 pointer-events-none" aria-hidden />
-          <div className="relative">
-            <Services />
-            <Experience />
-            <Certifications />
-            <Work />
-            <Testimonials />
-            <Contact />
-          </div>
+        <div className="bg-black">
+          <Services />
+          <Experience />
+          <Certifications />
+          <Work />
+          <Testimonials />
+          <Contact />
         </div>
       </main>
       <Footer />
