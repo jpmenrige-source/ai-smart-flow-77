@@ -323,9 +323,24 @@ function Hero() {
       />
       <div className="relative max-w-7xl mx-auto px-6">
         <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="mb-8"
+        >
+          <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto rounded-2xl overflow-hidden border-2 border-primary/30 shadow-[0_0_40px_-8px_oklch(0.74_0.19_55_/_0.35)]">
+            <img
+              src={Photo.url}
+              alt="John Paulus Menrige"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </motion.div>
+
+        <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
           className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 backdrop-blur px-3 py-1 text-xs font-mono text-muted-foreground"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
