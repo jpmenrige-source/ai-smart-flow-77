@@ -197,7 +197,7 @@ function Portfolio() {
             backgroundAttachment: "fixed",
           }}
         >
-          <div className="absolute inset-0 bg-background/70 pointer-events-none" aria-hidden />
+          <div className="absolute inset-0 bg-black/85 pointer-events-none" aria-hidden />
           <div className="relative">
             <Services />
             <Experience />
