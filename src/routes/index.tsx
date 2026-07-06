@@ -35,9 +35,31 @@ export const Route = createFileRoute("/")({
 const NAV = [
   { label: "Services", href: "#services" },
   { label: "Experience", href: "#experience" },
+  { label: "Certifications", href: "#certifications" },
   { label: "Work", href: "#work" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
+];
+
+const CERTIFICATIONS = [
+  { name: "n8n Automation", issuer: "n8n Training", file: N8nCert.url },
+  { name: "Make.com Automation", issuer: "Make Academy", file: MakeCert.url },
+  { name: "Zapier Automation", issuer: "Zapier", file: ZapierCert.url },
+  { name: "GoHighLevel", issuer: "HighLevel", file: HighLevelCert.url },
+  { name: "Prompt Engineering", issuer: "Prompt Engineering Certification", file: PromptCert.url },
+];
+
+const PROFESSIONAL_DEVELOPMENT = [
+  "Claude",
+  "Hermes",
+  "Llama",
+  "Mistral",
+  "Model Context Protocol (MCP)",
+  "Agent-to-Agent (A2A) Communication",
+  "Multi-Agent Systems",
+  "AI Memory Systems",
+  "Enterprise AI Architecture",
+  "Responsible AI",
 ];
 
 const SERVICES = [
