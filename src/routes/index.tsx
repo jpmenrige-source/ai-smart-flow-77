@@ -458,7 +458,7 @@ function Services() {
 
 function Experience() {
   return (
-    <section id="experience" className="relative py-24 md:py-32 border-t border-border/60">
+    <section id="experience" className="relative py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-[1fr_1.4fr] gap-12">
         <div className="lg:sticky lg:top-24 lg:self-start">
           <SectionHeader
@@ -507,7 +507,7 @@ function Experience() {
 
 function Certifications() {
   return (
-    <section id="certifications" className="relative py-24 md:py-32 border-t border-border/60">
+    <section id="certifications" className="relative py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeader
           eyebrow="Certifications"
@@ -570,7 +570,7 @@ function Certifications() {
 
 function Work() {
   return (
-    <section id="work" className="relative py-24 md:py-32 border-t border-border/60">
+    <section id="work" className="relative py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeader
           eyebrow="Selected Work"
@@ -612,7 +612,7 @@ function Work() {
 
 function Testimonials() {
   return (
-    <section id="testimonials" className="relative py-24 md:py-32 border-t border-border/60">
+    <section id="testimonials" className="relative py-24 md:py-32">
       <div
         className="absolute inset-0 pointer-events-none opacity-60"
         style={{ background: "var(--gradient-mesh)" }}
@@ -646,7 +646,7 @@ function Testimonials() {
 
 function Contact() {
   return (
-    <section id="contact" className="relative py-24 md:py-32 border-t border-border/60">
+    <section id="contact" className="relative py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-6">
         <div className="rounded-3xl border border-border bg-gradient-to-br from-card to-surface p-10 md:p-16 relative overflow-hidden">
           <div
