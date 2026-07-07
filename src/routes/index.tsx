@@ -554,7 +554,7 @@ function Certifications() {
           title="Training & credentials."
           desc="Formal training in leading AI automation platforms — plus ongoing professional development in the frontier of AI."
         />
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {CERTIFICATIONS.map((c, i) => (
             <motion.a
               key={c.name}
@@ -565,19 +565,28 @@ function Certifications() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="group relative p-6 rounded-2xl border border-border bg-card/60 backdrop-blur hover:border-primary/60 hover:bg-card transition-all flex items-start gap-4"
+              className="group relative rounded-2xl border border-border bg-card/60 backdrop-blur hover:border-primary/60 hover:bg-card transition-all overflow-hidden flex flex-col"
             >
-              <div className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                <Award className="h-5 w-5" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="font-display text-lg font-semibold leading-tight">{c.name}</h3>
-                <p className="mt-1 text-xs text-muted-foreground">{c.issuer}</p>
-                <div className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-wider text-primary">
-                  <FileText className="h-3 w-3" /> View certificate
+              <div className="relative aspect-[4/3] overflow-hidden bg-surface border-b border-border">
+                <img
+                  src={c.image}
+                  alt={`${c.name} certificate`}
+                  loading="lazy"
+                  className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+                <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-background/80 backdrop-blur px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-primary border border-primary/30">
+                  <Award className="h-3 w-3" /> Certified
                 </div>
               </div>
-              <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+              <div className="p-5 flex-1 flex flex-col">
+                <h3 className="font-display text-base font-semibold leading-tight">{c.name}</h3>
+                <p className="mt-1 text-xs text-muted-foreground">{c.issuer} · {c.date}</p>
+                <p className="mt-3 text-xs text-muted-foreground/80 leading-relaxed line-clamp-3">{c.topics}</p>
+                <div className="mt-4 pt-4 border-t border-border/60 flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-primary">
+                  <span className="inline-flex items-center gap-1.5"><FileText className="h-3 w-3" /> View PDF</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </div>
+              </div>
             </motion.a>
           ))}
         </div>
