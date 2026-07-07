@@ -27,6 +27,11 @@ import MakeCert from "@/assets/Make.com.pdf.asset.json";
 import N8nCert from "@/assets/n8n.pdf.asset.json";
 import PromptCert from "@/assets/Prompt_Engineering.pdf.asset.json";
 import ZapierCert from "@/assets/Zapier.pdf.asset.json";
+import HighLevelCertImg from "@/assets/highlevel-cert.jpg.asset.json";
+import MakeCertImg from "@/assets/make-cert.jpg.asset.json";
+import N8nCertImg from "@/assets/n8n-cert.jpg.asset.json";
+import PromptCertImg from "@/assets/prompt-cert.jpg.asset.json";
+import ZapierCertImg from "@/assets/zapier-cert.jpg.asset.json";
 import Photo from "@/assets/photo.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -43,11 +48,46 @@ const NAV = [
 ];
 
 const CERTIFICATIONS = [
-  { name: "n8n Automation", issuer: "n8n Training", file: N8nCert.url },
-  { name: "Make.com Automation", issuer: "Make Academy", file: MakeCert.url },
-  { name: "Zapier Automation", issuer: "Zapier", file: ZapierCert.url },
-  { name: "GoHighLevel", issuer: "HighLevel", file: HighLevelCert.url },
-  { name: "Prompt Engineering", issuer: "Prompt Engineering Certification", file: PromptCert.url },
+  {
+    name: "AI Automation with n8n",
+    issuer: "Technical Virtual Assistants PH",
+    date: "July 5, 2026",
+    file: N8nCert.url,
+    image: N8nCertImg.url,
+    topics: "AI Agents vs Workflows, n8n server setup, workflows & nodes, triggers, actions, branching, MCP servers, AI agents.",
+  },
+  {
+    name: "No Code Automation with Make.com",
+    issuer: "Tara AI Community+",
+    date: "July 2, 2026",
+    file: MakeCert.url,
+    image: MakeCertImg.url,
+    topics: "Interface walkthrough, scenario structure, filters, triggers, actions, data manipulation, advanced routing, HTTP, AI agents.",
+  },
+  {
+    name: "No Code Automation with Zapier",
+    issuer: "Tara AI Community+",
+    date: "June 30, 2026",
+    file: ZapierCert.url,
+    image: ZapierCertImg.url,
+    topics: "Zapier interface, triggers, formatter, delay, filter, paths, looping, sub-zaps, webhooks, AI with human-in-the-loop.",
+  },
+  {
+    name: "HighLevel CRM Full Training",
+    issuer: "Tara AI Community+",
+    date: "July 1, 2026",
+    file: HighLevelCert.url,
+    image: HighLevelCertImg.url,
+    topics: "CRM & pipelines, sales funnels, website builder, email marketing, booking, workflow automations, AI agents.",
+  },
+  {
+    name: "Prompt Engineering",
+    issuer: "Tara AI Community+",
+    date: "July 1, 2026",
+    file: PromptCert.url,
+    image: PromptCertImg.url,
+    topics: "Fundamentals, anatomy of a good prompt, practical techniques, real-world scenarios, tools, templates, workflows.",
+  },
 ];
 
 const PROFESSIONAL_DEVELOPMENT = [
@@ -514,7 +554,7 @@ function Certifications() {
           title="Training & credentials."
           desc="Formal training in leading AI automation platforms — plus ongoing professional development in the frontier of AI."
         />
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {CERTIFICATIONS.map((c, i) => (
             <motion.a
               key={c.name}
@@ -525,19 +565,28 @@ function Certifications() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="group relative p-6 rounded-2xl border border-border bg-card/60 backdrop-blur hover:border-primary/60 hover:bg-card transition-all flex items-start gap-4"
+              className="group relative rounded-2xl border border-border bg-card/60 backdrop-blur hover:border-primary/60 hover:bg-card transition-all overflow-hidden flex flex-col"
             >
-              <div className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                <Award className="h-5 w-5" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="font-display text-lg font-semibold leading-tight">{c.name}</h3>
-                <p className="mt-1 text-xs text-muted-foreground">{c.issuer}</p>
-                <div className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-wider text-primary">
-                  <FileText className="h-3 w-3" /> View certificate
+              <div className="relative aspect-[4/3] overflow-hidden bg-surface border-b border-border">
+                <img
+                  src={c.image}
+                  alt={`${c.name} certificate`}
+                  loading="lazy"
+                  className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+                <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-background/80 backdrop-blur px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-primary border border-primary/30">
+                  <Award className="h-3 w-3" /> Certified
                 </div>
               </div>
-              <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+              <div className="p-5 flex-1 flex flex-col">
+                <h3 className="font-display text-base font-semibold leading-tight">{c.name}</h3>
+                <p className="mt-1 text-xs text-muted-foreground">{c.issuer} · {c.date}</p>
+                <p className="mt-3 text-xs text-muted-foreground/80 leading-relaxed line-clamp-3">{c.topics}</p>
+                <div className="mt-4 pt-4 border-t border-border/60 flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-primary">
+                  <span className="inline-flex items-center gap-1.5"><FileText className="h-3 w-3" /> View PDF</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </div>
+              </div>
             </motion.a>
           ))}
         </div>
