@@ -568,6 +568,114 @@ function Certifications() {
   );
 }
 
+function ProjectDiagram({ tech, tag }: { tech: string[]; tag: string }) {
+  // Take up to 6 tech chips as peripheral nodes
+  const nodes = tech.slice(0, 6);
+  // Slot positions around central hub (viewBox 640 x 260)
+  const slots = [
+    { x: 70,  y: 55,  side: "L" as const },
+    { x: 70,  y: 205, side: "L" as const },
+    { x: 570, y: 55,  side: "R" as const },
+    { x: 570, y: 205, side: "R" as const },
+    { x: 250, y: 30,  side: "T" as const },
+    { x: 390, y: 30,  side: "T" as const },
+  ];
+  const cx = 320, cy = 130;
+
+  const pathTo = (x: number, y: number, side: "L" | "R" | "T") => {
+    if (side === "L") {
+      const midX = (x + cx) / 2;
+      return `M ${x + 34} ${y} H ${midX} V ${cy} H ${cx - 46}`;
+    }
+    if (side === "R") {
+      const midX = (x + cx) / 2;
+      return `M ${x - 34} ${y} H ${midX} V ${cy} H ${cx + 46}`;
+    }
+    // Top
+    const midY = (y + cy) / 2;
+    return `M ${x} ${y + 34} V ${midY} H ${cx} V ${cy - 46}`;
+  };
+
+  return (
+    <div className="mt-6 rounded-xl border border-primary/20 bg-[oklch(0.16_0.03_240)]/60 overflow-hidden">
+      <svg viewBox="0 0 640 260" className="w-full h-auto block" role="img" aria-label={`${tag} architecture diagram`}>
+        <defs>
+          <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="oklch(0.85 0.15 200)" stopOpacity="0.9" />
+            <stop offset="60%" stopColor="oklch(0.6 0.18 220)" stopOpacity="0.35" />
+            <stop offset="100%" stopColor="oklch(0.4 0.15 240)" stopOpacity="0" />
+          </radialGradient>
+          <pattern id="hex" width="34" height="30" patternUnits="userSpaceOnUse">
+            <path d="M17 0 L34 8 L34 22 L17 30 L0 22 L0 8 Z" fill="none" stroke="oklch(0.7 0.12 220)" strokeOpacity="0.08" strokeWidth="0.6" />
+          </pattern>
+          <linearGradient id="wire" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0%" stopColor="oklch(0.75 0.14 200)" stopOpacity="0.15" />
+            <stop offset="100%" stopColor="oklch(0.85 0.16 195)" stopOpacity="0.85" />
+          </linearGradient>
+        </defs>
+
+        <rect width="640" height="260" fill="oklch(0.14 0.04 245)" />
+        <rect width="640" height="260" fill="url(#hex)" />
+
+        {/* Wires */}
+        {nodes.map((_, i) => {
+          const s = slots[i];
+          return (
+            <path
+              key={`w-${i}`}
+              d={pathTo(s.x, s.y, s.side)}
+              fill="none"
+              stroke="url(#wire)"
+              strokeWidth="1.2"
+              strokeLinecap="round"
+            />
+          );
+        })}
+
+        {/* Connector dots along wires */}
+        {nodes.map((_, i) => {
+          const s = slots[i];
+          const dotX = s.side === "T" ? s.x : (s.side === "L" ? (s.x + cx) / 2 : (s.x + cx) / 2);
+          const dotY = s.side === "T" ? (s.y + cy) / 2 : cy;
+          return (
+            <circle key={`d-${i}`} cx={dotX} cy={dotY} r="3.5" fill="oklch(0.85 0.16 195)" opacity="0.9" />
+          );
+        })}
+
+        {/* Central hub glow */}
+        <circle cx={cx} cy={cy} r="80" fill="url(#hubGlow)" />
+        {/* Central hub node */}
+        <g transform={`translate(${cx - 40} ${cy - 40})`}>
+          <rect x="0" y="0" width="80" height="80" rx="12" fill="oklch(0.22 0.06 230)" stroke="oklch(0.85 0.16 195)" strokeWidth="1.2" />
+          {/* faceted polygon */}
+          <polygon points="40,14 66,30 66,54 40,70 14,54 14,30" fill="none" stroke="oklch(0.9 0.15 195)" strokeWidth="1" opacity="0.9" />
+          <polygon points="40,14 66,30 40,42 14,30" fill="oklch(0.9 0.16 195)" opacity="0.25" />
+          <polygon points="14,30 40,42 40,70 14,54" fill="oklch(0.7 0.16 210)" opacity="0.3" />
+          <polygon points="66,30 40,42 40,70 66,54" fill="oklch(0.55 0.16 230)" opacity="0.35" />
+          {/* nodes on polygon */}
+          {[[40,14],[66,30],[66,54],[40,70],[14,54],[14,30],[40,42]].map(([px,py],k)=>(
+            <circle key={k} cx={px} cy={py} r="2" fill="oklch(0.95 0.05 195)" />
+          ))}
+        </g>
+
+        {/* Peripheral nodes */}
+        {nodes.map((label, i) => {
+          const s = slots[i];
+          return (
+            <g key={`n-${i}`} transform={`translate(${s.x - 34} ${s.y - 22})`}>
+              <rect width="68" height="44" rx="8" fill="oklch(0.18 0.05 235)" stroke="oklch(0.75 0.14 200)" strokeWidth="1" />
+              <rect x="1" y="1" width="66" height="42" rx="7" fill="none" stroke="oklch(0.9 0.15 195)" strokeOpacity="0.25" strokeWidth="0.6" />
+              <text x="34" y="27" textAnchor="middle" fontFamily="ui-monospace, monospace" fontSize="10" fill="oklch(0.95 0.03 200)" letterSpacing="0.5">
+                {label.length > 10 ? label.slice(0, 9) + "…" : label}
+              </text>
+            </g>
+          );
+        })}
+      </svg>
+    </div>
+  );
+}
+
 function Work() {
   return (
     <section id="work" className="relative py-24 md:py-32">
@@ -595,6 +703,7 @@ function Work() {
               </div>
               <h3 className="mt-4 font-display text-2xl md:text-3xl font-semibold">{w.title}</h3>
               <p className="mt-3 text-muted-foreground max-w-2xl">{w.desc}</p>
+              <ProjectDiagram tech={w.tech} tag={w.tag} />
               <div className="mt-6 flex flex-wrap gap-2">
                 {w.tech.map((t) => (
                   <span key={t} className="rounded-md border border-border bg-surface px-2.5 py-1 text-[11px] font-mono text-muted-foreground">
@@ -609,6 +718,7 @@ function Work() {
     </section>
   );
 }
+
 
 function Testimonials() {
   return (
