@@ -48,11 +48,46 @@ const NAV = [
 ];
 
 const CERTIFICATIONS = [
-  { name: "n8n Automation", issuer: "n8n Training", file: N8nCert.url },
-  { name: "Make.com Automation", issuer: "Make Academy", file: MakeCert.url },
-  { name: "Zapier Automation", issuer: "Zapier", file: ZapierCert.url },
-  { name: "GoHighLevel", issuer: "HighLevel", file: HighLevelCert.url },
-  { name: "Prompt Engineering", issuer: "Prompt Engineering Certification", file: PromptCert.url },
+  {
+    name: "AI Automation with n8n",
+    issuer: "Technical Virtual Assistants PH",
+    date: "July 5, 2026",
+    file: N8nCert.url,
+    image: N8nCertImg.url,
+    topics: "AI Agents vs Workflows, n8n server setup, workflows & nodes, triggers, actions, branching, MCP servers, AI agents.",
+  },
+  {
+    name: "No Code Automation with Make.com",
+    issuer: "Tara AI Community+",
+    date: "July 2, 2026",
+    file: MakeCert.url,
+    image: MakeCertImg.url,
+    topics: "Interface walkthrough, scenario structure, filters, triggers, actions, data manipulation, advanced routing, HTTP, AI agents.",
+  },
+  {
+    name: "No Code Automation with Zapier",
+    issuer: "Tara AI Community+",
+    date: "June 30, 2026",
+    file: ZapierCert.url,
+    image: ZapierCertImg.url,
+    topics: "Zapier interface, triggers, formatter, delay, filter, paths, looping, sub-zaps, webhooks, AI with human-in-the-loop.",
+  },
+  {
+    name: "HighLevel CRM Full Training",
+    issuer: "Tara AI Community+",
+    date: "July 1, 2026",
+    file: HighLevelCert.url,
+    image: HighLevelCertImg.url,
+    topics: "CRM & pipelines, sales funnels, website builder, email marketing, booking, workflow automations, AI agents.",
+  },
+  {
+    name: "Prompt Engineering",
+    issuer: "Tara AI Community+",
+    date: "July 1, 2026",
+    file: PromptCert.url,
+    image: PromptCertImg.url,
+    topics: "Fundamentals, anatomy of a good prompt, practical techniques, real-world scenarios, tools, templates, workflows.",
+  },
 ];
 
 const PROFESSIONAL_DEVELOPMENT = [
