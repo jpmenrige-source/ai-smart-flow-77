@@ -27,6 +27,11 @@ import MakeCert from "@/assets/Make.com.pdf.asset.json";
 import N8nCert from "@/assets/n8n.pdf.asset.json";
 import PromptCert from "@/assets/Prompt_Engineering.pdf.asset.json";
 import ZapierCert from "@/assets/Zapier.pdf.asset.json";
+import HighLevelCertImg from "@/assets/highlevel-cert.jpg.asset.json";
+import MakeCertImg from "@/assets/make-cert.jpg.asset.json";
+import N8nCertImg from "@/assets/n8n-cert.jpg.asset.json";
+import PromptCertImg from "@/assets/prompt-cert.jpg.asset.json";
+import ZapierCertImg from "@/assets/zapier-cert.jpg.asset.json";
 import Photo from "@/assets/photo.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
