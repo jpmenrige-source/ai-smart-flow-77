@@ -514,58 +514,33 @@ function Certifications() {
           title="Training & credentials."
           desc="Formal training in leading AI automation platforms — plus ongoing professional development in the frontier of AI."
         />
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {CERTIFICATIONS.map((c, i) => (
-            <motion.div
+            <motion.a
               key={c.name}
+              href={c.file}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="group relative rounded-2xl border border-border bg-card/60 backdrop-blur hover:border-primary/60 transition-all overflow-hidden flex flex-col"
+              className="group relative p-6 rounded-2xl border border-border bg-card/60 backdrop-blur hover:border-primary/60 hover:bg-card transition-all flex items-start gap-4"
             >
-              <a
-                href={c.file}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative block bg-white"
-                aria-label={`Open ${c.name} certificate`}
-              >
-                <div className="aspect-[4/3] w-full overflow-hidden">
-                  <object
-                    data={`${c.file}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-                    type="application/pdf"
-                    className="w-full h-full pointer-events-none"
-                    aria-label={`${c.name} certificate preview`}
-                  >
-                    <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
-                      Certificate preview unavailable
-                    </div>
-                  </object>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              </a>
-              <div className="p-5 flex items-start gap-3 border-t border-border">
-                <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                  <Award className="h-5 w-5" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-display text-base font-semibold leading-tight">{c.name}</h3>
-                  <p className="mt-0.5 text-xs text-muted-foreground">{c.issuer}</p>
-                  <a
-                    href={c.file}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-2 inline-flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-wider text-primary hover:underline"
-                  >
-                    <FileText className="h-3 w-3" /> Open certificate <ArrowUpRight className="h-3 w-3" />
-                  </a>
+              <div className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <Award className="h-5 w-5" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="font-display text-lg font-semibold leading-tight">{c.name}</h3>
+                <p className="mt-1 text-xs text-muted-foreground">{c.issuer}</p>
+                <div className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-wider text-primary">
+                  <FileText className="h-3 w-3" /> View certificate
                 </div>
               </div>
-            </motion.div>
+              <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+            </motion.a>
           ))}
         </div>
-
 
         <div className="mt-16 rounded-2xl border border-border bg-card/60 backdrop-blur p-8 md:p-10">
           <div className="flex items-center gap-3">
